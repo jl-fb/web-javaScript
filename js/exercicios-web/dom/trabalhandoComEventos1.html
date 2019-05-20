@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- preparar HTML para receber função onclick 
+        onclick="navegarEm5s(event)" -->
+        <a wait-5s href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        
+        function navegarEm5s(e){
+            e.preventDefault()
+            
+            /* setar função que dispara o evento em 5s
+            /* 'e' é o evento que dispara a função"target" é o elemento HTML que disparou o evento
+            o link <a href> do HTML acima (target) é colocado no browser (window)  */
+            setTimeout(() => {
+                /* const link = e.target
+                window.location.href = link.href */
+                window.location.href = e.target.href}, 5000)
+        }
+            /* outra maneira */
+            // const a = document.querySelector('a')
+            // a.onclick = navegarEm5s
+
+            /* melhor com atributo personalizado, já q se pressupõe q um JS vai trabalha-lo*/
+            const clickWait = document.querySelector('[wait-5s]')
+            clickWait.onclick = navegarEm5s
+    </script>
+</body>

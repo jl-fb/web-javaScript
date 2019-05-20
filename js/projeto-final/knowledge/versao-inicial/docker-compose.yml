@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node:
+    container_name: node
+    build: .
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - mongo
+      - postgres
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+     - "27017:27017"
+  postgres:
+    container_name: postgresql
+    image: postgres:latest
+    restart: always
+    environment:
+      env_file: ./backend/.env

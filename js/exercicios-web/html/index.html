@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+    <style>
+    #conteudo{
+        padding: 30px 0px;
+    } 
+    </style>
+</head>
+    <header>
+        <h1>Exercícios HTML</h1> 
+    </header> 
+
+    <nav>
+        <a href="exercicios/teste.html">00 - Teste</a> |
+        <a href="exercicios/texto1.html">01 - Texto 1</a> |
+        <a href="exercicios/texto2.html">02 - Texto 2</a> |
+        <a href="exercicios/listas.html">03 - Listas</a> |
+        <a href="exercicios/link.html">04 - Links</a> |
+        <a href="exercicios/tabela.html">05 - Tabela</a> |
+        <a href="exercicios/form/form.html">06 - Formulário</a> |
+        <a href="exercicios/imagens.html">07 - Imagens</a> |
+        <a href="exercicios/video.html">08 - Vídeos</a> |
+        <a href="exercicios/tagsNaoVisuais.html">09 - Tags não visuais</a> |
+
+        <a href wm-nav="exercicios/prop.html">Propriedade Personalizada</a>
+
+    </nav>
+
+    <section id="conteudo"></section>
+
+    <footer>
+        
+        Curso de WEB moderno
+    </footer>
+
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function(e){
+                e.preventDefault() //não dixa o browser ir para página solicitada (comportamento padrão)
+                fetch(link.href) //chamada ajax - recebe uma Promise para entregar o conteúdo da requisição na pagina index
+                    .then(resp => resp.text()) // tb é uma promise, recebe o conteúdo html da requisição
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+        const conteudo = document.getElementById('conteudo')
+        link.onclick = function(e){
+            e.preventDefault()
+            fetch(link.getAttribute('wm-nav')).then(resp => resp.text())
+            .then(html => conteudo.innerHTML = html)
+        }
+    })
+    </script>
+    
+<body>
+    
+</body>
+</html>

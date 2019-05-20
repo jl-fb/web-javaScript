@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diretiva Personalizada</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+
+<body class="exercicio">
+    <div id="app">
+        <input v-model="nome" type="text" />
+        <div v-inertido="nome"></div>
+
+    </div>
+    <script>
+
+        new Vue({
+            el: "#app",
+            data: {
+                nome: ''
+            }
+        })
+
+        Vue.directive('inertido', {
+            componentUpdated(el, binding) {
+                const invertido = binding.value.split('')
+                    .reverse().join('')
+                el.innerHTML = invertido
+            }
+        })
+    </script>
+</body>
+
+</html>

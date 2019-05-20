@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicando Estilo</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+    <style>
+        .vermelho {
+            background-color: red;
+        }
+    </style>
+</head>
+<body class="exercicio">
+
+    <!-- <div id="app" v-on:click="aplicarCor = !aplicarCor"
+    v-bind:class="{vermelho: aplicarCor}"> -->
+ 
+     <!-- <div id="app" @click="aplicarCor = !aplicarCor" :class="{vermelho: aplicarCor}" >
+        teste
+    </div> -->
+    
+    <div id="app" :class="{vermelho: aplicarCor}" @click="aplicaCor">
+        teste
+    </div>
+    
+    <!-- <div id="app" :class="{vermelho: aplicarCor}"  >
+        teste
+        <br>
+        <button @click="aplicaCor">Mudar background</button>
+    </div> -->
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data: {
+                aplicarCor: false
+            },
+            methods: {
+                aplicaCor(){
+                    return this.aplicarCor = !this.aplicarCor
+                }
+            }
+        })       
+    </script>
+</body>
+</html>

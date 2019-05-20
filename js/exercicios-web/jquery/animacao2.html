@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Animação #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        body {
+            position: relative;
+            background-color: #999;
+            color: #000;
+        }
+
+        div {
+            position: absolute;
+            display: inline;
+            border: solid 10px #000;
+            padding: 50px;
+            font-size: 3em;
+            background-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Animar!</div>
+
+    <script>
+        /*
+        function alterarLargura(seletor,valor, duracao, callback){
+            $(seletor).animate({width: `+=${valor}`}, duracao, callback)
+        }
+
+        function moverDiagonal(valor, duracao, callback){
+            $('div').animate({top: `+=${valor}`, left: `+=${valor}`}, duracao, callback)
+             se a intenção fosse reutilizar a função nãodeclartaámos a div 
+            e passariámos um seletor como parâmetro, como feito acima 
+        } 
+
+         function girar(valor, duracao, callback){
+            $('div').animate({transform: `+=${valor}`}, {
+                step: function(valor){
+                    $(this).css('transform', `rotate(${valor}deg`)
+                }, 
+                duration: duracao
+            }, 'linear', callback)
+        }
+       
+        alterarLargura('div', 300, 100, () => {
+            alterarLargura('div', -300, 'slow', () => {
+                moverDiagonal(300, 600, ()=>{
+                    girar(360, 800)
+                })
+            })
+        }) 
+        */
+        function alterarLargura(seletor, valor, duracao){
+            return new Promise(resolve => {
+           // const rs = $(seletor).animate({width: `+=${valor}`}, duracao)
+                resolve($(seletor).animate({width: `+=${valor}`}, duracao))
+            })
+        }
+        function moverDiagonal(seletor, valor, duracao){
+            return new Promise(resolve => {
+            //const rs = $(seletor).animate({top: `+=${valor}`, left: `+=${valor}`}, duracao)
+                resolve($(seletor).animate({top: `+=${valor}`, left: `+=${valor}`}, duracao))
+            })
+        }
+         function girar(seletor, valor, duracao,){
+            return new Promise( (resolve, reject) => {
+                
+                resolve($(seletor).animate({transform: `+=${valor}`}, {
+                    /* step: valor => {
+                        $(seletor).css('transform', `ratate(${valor}deg`)) 
+                    }, */
+                    step: function(valor){
+                        $(this).css('transform', `rotate(${valor}deg)`)
+                    },
+                    duration : duracao
+                }, 'linear'))
+                
+            })
+        } 
+
+        alterarLargura('div', 300, 500)
+        .then(alterarLargura('div', -300, 900))
+        .then(moverDiagonal('div', 300, 600))
+        .then(girar('div', 1440, 500))
+
+    </script>
+</body>

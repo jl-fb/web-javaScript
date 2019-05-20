@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque')
+
+        const divs = document.getElementsByTagName('div') /* cria uma lista com elemento 'div' presentes no .HTML (HTML collection) trabalhado */
+        /* Manipular a lista de elementos tranformando em Array */
+        Array.from(divs).forEach( e => e.classList.remove('destaque')) /* remover classe destaque das tags div */
+
+        /* outra manera de transformar a lista texto do HTML em um array para manipular é usando o spread */
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        /* Selecionar elementos a partir da classe */
+
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+
+       /*  const arrayUl = [...ultimosElementos]
+        arrayUl.forEach(e=> e.classList.remove('destaque')) */
+        for(let e of ultimosElementos){
+            e.classList.remove('destaque')
+        }
+        
+    </script>
+</body>
+</html>

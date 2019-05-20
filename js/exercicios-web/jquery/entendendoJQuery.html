@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        /* selecionando elemento DOM através de decorator (extensão do objeto da DOM) */
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        /* selecionando objeto puro da DOM (sem os métodos do jQuery) */
+        console.log($('div').get(0))
+        
+        /* função utilitária */
+        console.log($.isEmptyObject({}))
+        console.log(jQuery.inArray(3,[1,2,3]))
+
+        /* criar plugins */
+        $.fn.fundoVerde = function(){
+            this.css('background-color', 'green ')
+            /* retornar o objeto para que o jQuery consiga decorar e add métodos */
+            return this
+        }
+
+        $('body').fundoVerde().fadeOut(1000).show(5000)
+    </script>
+</body> 

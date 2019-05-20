@@ -1,0 +1,84 @@
+<h1>Listas</h1>
+
+<!--Listas Ordenadas-->
+<h2>Aprovados</h2>
+<ol>
+    <li>Bia</li>
+    <li>Pedro</li>
+    <li>Ana</li>
+    <li>João</li>
+</ol>
+
+<!--Lista não ordenada-->
+<h2>Lista de compras</h2>
+<ul>
+    <li>Queijo</li>
+    <li>leite</li>
+    <li>arroz</li>
+</ul>
+
+<!--Lista de Definição-->
+<h2>Pincipais termos do glossário CLoud Computing</h2>
+<dl>
+    <dt>BaaS</dt>
+    <dd>Backend como serviço</dd>
+    <dt>IaaS</dt><dd>Infraestrutura como serviço</dd>
+    <dt>PaaS</dt>
+    <dd>Plataforma como serviço</dd>
+    <dt>SaaS</dt>
+    <dd>Software como serviço</dd>
+</dl>
+
+<!--Listas aninhadas-->
+<h1>Listas Aninhadas</h1>
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        <span wm-folder>Backend</span>
+        <ul>
+            <li>
+               <span wm-folder>app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+               <span wm-folder>config</span>
+               <ul>
+                   <li>banco.js</li>
+                   <li>rotas.js</li>
+                   <li>servidor.js</li>
+               </ul> 
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span wm-folder>Frontend</span>
+        <ul>
+            <li>
+                <span wm-folder>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>aoo.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    //fazer lista aparecer e sumir
+    document.querySelectorAll('[wm-folder]').forEach(item => {
+        item.onclick = function(e){
+            const ul = item.nextElementSibling
+            const display = ul.style.display
+            ul.style.display = display === 'none' ? 'block' : 'none'
+        }
+    })
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #03</h1>
+    <div id='conteudo'></div>
+
+    <script>
+        
+        //$(document).ready(function(){
+        
+/*         $(function(){        
+            const alunos = [
+                { nome: 'Ana', nota: 9.1 },
+                { nome: 'Bianca', nota: 8.4 },
+                { nome: 'Carlos', nota: 7.6 },
+                { nome: 'Julia', nota: 9.7 }
+            ]
+
+            const linhas = alunos.map(aluno => {
+                const tdNome = $("<td>").html(aluno.nome)
+                const tdNota = $('<td>').html(aluno.nota)
+                //return $('<tr>').append(tdNome).append(tdNota)
+                return $('<tr>').append(tdNome, tdNota)
+
+            })
+            const cabecalho = $('<tr>').html('<th>Nome</th><th>Nota</th>')
+            const tabela = $('<table>').append(cabecalho).append(linhas)
+                .css('border', 'solid 5px')
+
+            $('#conteudo').html(tabela)
+        }) */
+
+        $(function(){
+            const alunos = [
+                { nome: 'Ana', nota: 9.1 },
+                { nome: 'Bianca', nota: 8.4 },
+                { nome: 'Carlos', nota: 7.6 },
+                { nome: 'Julia', nota: 9.7 }
+            ]
+/* 
+            const cabecalho =
+                $('<tr>')
+                    .append($('<th>').append('Nome'))
+                    .append($('<th>').append('Nota'))
+
+            const tabela = $('<table>').append(cabecalho)
+
+            $(alunos).each(function (i, e) {
+                tabela.append(
+                    $('<tr>')
+                        .append($('<td>').append(e.nome))
+                        .append($('<td>').append(e.nota))
+                )
+            })
+
+            $('#conteudo').append(tabela)
+        */
+            $("#conteudo").html('<table id="tabela">')
+            $(alunos).each((i,e) => {
+                $('#tabela').append(`<tr><td>${e.nome}</td><td>${e.nota}</tr>`)
+            }) 
+        })
+    </script>
+</body>

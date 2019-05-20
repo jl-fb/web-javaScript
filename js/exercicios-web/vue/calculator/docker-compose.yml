@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  vueapp:
+    build: ./
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8080:8080
+    command: "npm run serve"

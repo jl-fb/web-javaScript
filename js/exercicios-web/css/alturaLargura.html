@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        body {
+            font-size: 40px;
+            background-color: coral;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        span, div {
+            width: 50%; /* somente a div ira receber largura por ser block e não inline */
+            height: 50%; /* Nem a div aceiterá a altura em valor relativo, 
+            pois seria 50% do valor de body q é exatamente a span+div*/
+            height: 250px; /* usando valor fixo aceitará */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+</body>
+
+</html>

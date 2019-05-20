@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Maria Julia da Silva",
+      "email": "mjds@empresa.com"
+    },
+    {
+      "name": "Luísa Cláudia",
+      "email": "Lulu@negocio.com.br",
+      "id": 3
+    },
+    {
+      "name": "Camila goet",
+      "email": "camila@negocio.com",
+      "id": 4
+    }
+  ]
+}

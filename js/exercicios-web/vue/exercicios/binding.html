@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal?</a></p>
+        
+        <!-- Add directivas ou fazendo BIND -->
+        <p><a v-bind:href="link" target="blank">Canal</a></p>
+        <p><a :href="link" target="blank">Canal 2</a></p>
+
+        <p>
+             <!-- Atualização de 2 vias ou 2 way bind -->
+             <!-- com v-model o atributo data seá atualizado e todas suas referencias tb -->
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+                <br>
+                <br>
+             <!-- Com o bind não há atualização do atributo data -->
+             <input type="text" v-bind:value="nome"><br>
+             <span>{{nome}}</span>
+
+             <br><br>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                link: "https://youtube.com/cod3rcursos",
+                nome: "Maria"
+            },
+
+            watch: {
+                nome(novoValor){
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>
