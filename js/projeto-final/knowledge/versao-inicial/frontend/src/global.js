@@ -1,6 +1,7 @@
 //Tratar erros a partir do catch
 import Vue from 'vue';
 
+export const userKey = "_knowledge_user";
 export const baseApiUrl = 'http://localhost:3000';
 
 export function showError(e) {
@@ -13,4 +14,4 @@ export function showError(e) {
     }
 }
 
-export default { baseApiUrl, showError }
+export default { baseApiUrl, showError, userKey }

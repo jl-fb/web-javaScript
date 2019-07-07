@@ -14,6 +14,7 @@ module.exports = app => {
             categories: Number,
             articles: Number
         }
+        // sort indica que pegará estatísticas de forma decrescente, ou seja a mais atual
         Stat.findOne({}, {}, { sort: { 'createdAt': -1 } })
             .then((result) => {
                 resp.json(result) || defaultStat

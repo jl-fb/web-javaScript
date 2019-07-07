@@ -4,7 +4,7 @@ module.exports = app => {
     // Marcando o schedule para ser chamado todo minuto
     // Indo no postgres e fazendo a contagem dos elementos
     schedule.scheduleJob('*/1 * * * *', async function () {
-        const usersCount = await app.db('users').count('id').first();
+        const usersCount = await app.db('users').count('id').whereNull('deletedAt').first();
         const categoriesCount = await app.db('categories').count('id').first();
         const articlesCount = await app.db('articles').count('id').first();
 

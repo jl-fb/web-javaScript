@@ -71,10 +71,10 @@
     <hr>
     <b-table hover striped :items="users" :fields="fields">
       <template slot="actions" slot-scope="data">
-        <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
+        <b-button variant="warning" @click="loadUser(data.item)" class="mr-2 mb-2">
           <i class="fa fa-pencil"></i>
         </b-button>
-        <b-button variant="danger" @click="loadUser(data.item, 'remove')">
+        <b-button variant="danger" @click="loadUser(data.item, 'remove')" class="mb-2">
           <i class="fa fa-trash"></i>
         </b-button>
       </template>

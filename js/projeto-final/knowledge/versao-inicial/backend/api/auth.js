@@ -34,7 +34,7 @@ module.exports = app => {
             // iat (issued at )
             iat: now,
             // Data de expiração (3 dias)
-            exp: now + (60 * 60 * 24 * 3)
+            exp: now + (60 * 60 * 24)
         }
         // Gerando o token e mandando para o frontend
         resp.json({

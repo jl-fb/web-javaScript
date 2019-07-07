@@ -1,9 +1,10 @@
 <template>
-  <div id="app" :class="{'hide-menu': !isMenuVisible}">
-    <Header title="João - Base de Conhecimento" :hideToggle="false" :hideUserDropdown="false"/>
-    <Menu/>
-    <Content/>
-    <Footer/>
+  <div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
+    <Header title="João - Base de Conhecimento" :hideToggle="!user" :hideUserDropdown="!user" />
+    <Menu v-if="user" />
+    <Loading v-if="validatingToken" />
+    <Content v-else />
+    <Footer />
   </div>
 </template>
 
@@ -13,11 +14,49 @@ import Header from "@/components/template/Header";
 import Menu from "@/components/template/Menu";
 import Content from "@/components/template/Content";
 import Footer from "@/components/template/Footer";
+import axios from "axios";
+import { baseApiUrl, userKey } from "@/global";
+import Loading from "@/components/template/Loading";
 
 export default {
   name: "App",
-  components: { Header, Menu, Content, Footer },
-  computed: mapState(["isMenuVisible"])
+  components: { Header, Menu, Content, Footer, Loading },
+  computed: mapState(["isMenuVisible", "user"]),
+  data() {
+    return {
+      validatingToken: true
+    };
+  },
+  methods: {
+    async validateToken() {
+      this.validatingToken = true;
+
+      const json = localStorage.getItem(userKey);
+      const userData = JSON.parse(json);
+      this.$store.commit("setUser", null);
+
+      if (!userData) {
+        this.validatingToken = false;
+        this.$router.push({ name: "auth" });
+        return;
+      } else {
+        const resp = await axios.post(`${baseApiUrl}/validateToken`, userData);
+        if (resp.data) {
+          this.$store.commit("setUser", userData);
+          if (this.$mq === "xs" || this.$mq === "sm") {
+            this.$store.commit("toggleMenu");
+          }
+        } else {
+          localStorage.removeItem(userKey);
+          this.$router.push({ name: "auth" });
+        }
+        this.validatingToken = false;
+      }
+    }
+  },
+  created() {
+    this.validateToken();
+  }
 };
 </script>
 

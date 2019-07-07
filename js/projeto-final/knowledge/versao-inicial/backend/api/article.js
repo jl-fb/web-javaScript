@@ -56,7 +56,7 @@ module.exports = app => {
             resp.status(500).send(error)
         }
     }
-    const limit = 10 //usado para paginação
+    const limit = 3 //usado para paginação
     const get = async (req, resp) => {
         const page = req.query.page || 1
 
